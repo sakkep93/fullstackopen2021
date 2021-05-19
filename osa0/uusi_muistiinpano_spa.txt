@@ -1,0 +1,25 @@
+title User creates a new note (spa)
+
+note over browser:
+user is at https://studies.cs.helsinki.fi/exampleapp/spa
+and browser already has HTML-code, main.css and spa.js
+in memory
+end note
+
+note over browser:
+user fills in the form and upon submission
+the browser executes spa.js, which
+- prevents default form submission functionality
+- pushes new note to notes (list)
+- redraws the updated notes list (in browser memory)\n  and renders the updated notes on screen
+- once the updated notes list has been rendered on screen,\n  spa.js sends the newly created note to server,\n  which furthermore stores the new note
+- this last step enables the note to be included in the notes\n  list that gets rendered on screen in the future as well
+end note:
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa\nRequest Payload (e.g):\n{content: "wuuf wuf wuf", date: "2021-05-19T16:40:44.631Z"}
+server->*database: {content: "wuuf wuf wuf", date: "2021-05-19T16:40:44.631Z"}
+database-->server: successfully added new note
+server-->browser: HTTP 201 Created\n{"message":"note created"}
+
+note over browser:
+even though the server responds with HTTP code 201 Created,\nthe spa.js has already updated the list of notes visible for the user\nbefore the note has been added to the database by the server
+end note

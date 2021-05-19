@@ -1,0 +1,28 @@
+title User enters https://studies.cs.helsinki.fi/exampleapp/spa
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: HTML-code
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->browser: spa.js
+
+note over browser:
+the browser starts to execute js code,
+which requests JSON-data from the server
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server->database: fetches notes
+database-->server: notes data
+server-->browser: [{"content":"add a note","date":"2021-05-19T07:41:31.325Z"}, ...]
+
+
+note over browser:
+the browser executes eventhandler,
+which renders the notes on the screen
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/favicon.ico
+server-->browser: HTML-code
