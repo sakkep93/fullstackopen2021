@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const Filter = ({ handleChange, filterValue }) => <div> filter shown with <input value={filterValue} onChange={handleChange} /></div>
 const PersonForm = (props) => {
@@ -26,15 +27,16 @@ const Persons = ({ persons }) => {
 }
 
 const App = () => {
-    const [persons, setPersons] = useState([
-        { name: 'Arto Hellas', number: '040-123456' },
-        { name: 'Ada Lovelace', number: '39-44-5323523' },
-        { name: 'Dan Abramov', number: '12-43-234345' },
-        { name: 'Mary Poppendieck', number: '39-23-6423122' }
-    ])
+    const [persons, setPersons] = useState([])
     const [ newName, setNewName ] = useState('')
     const [ newNumber, setNewNumber ] = useState('')
     const [ newFilter, setNewFilter ] = useState('')
+
+    useEffect(() => {
+        axios
+        .get('http://localhost:3001/persons')
+        .then(response => { setPersons(response.data) })
+    }, [])
 
     const addPerson = (event) => {
         event.preventDefault()
@@ -50,7 +52,6 @@ const App = () => {
     }
 
     const personsToShow = persons.filter(p => p.name.toLowerCase().startsWith(newFilter.toLowerCase()))
-
     const handleFilterChange = (event) => setNewFilter(event.target.value)
     const handleNameChange = (event) => setNewName(event.target.value)
     const handleNumberChange = (event) => setNewNumber(event.target.value)
