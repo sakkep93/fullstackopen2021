@@ -71,7 +71,7 @@ const App = () => {
     }, [])
 
     const updatePerson = (name, number) => {
-        const person = persons.find(p => p.name === name)
+        const person = persons.find(p => p.name.toLowerCase() === name.toLowerCase())
         const changedPerson = { ...person, number: number}
         personService
             .updatePerson(person.id, changedPerson)
