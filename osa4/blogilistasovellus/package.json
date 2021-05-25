@@ -1,0 +1,33 @@
+{
+  "name": "blogilistasovellus",
+  "version": "1.0.0",
+  "description": "blogilistasovellus as a solution for part 4 in Full Stack Open 2021 course",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "proxy": "http://localhost:3001",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakkep93/fullstackopen2021.git"
+  },
+  "author": "Sakari Pöyhiä",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sakkep93/fullstackopen2021/issues"
+  },
+  "homepage": "https://github.com/sakkep93/fullstackopen2021#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.10"
+  },
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "nodemon": "^2.0.7"
+  }
+}
