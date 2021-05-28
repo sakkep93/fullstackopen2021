@@ -59,9 +59,9 @@ const App = () => {
 
     blogService
       .create(blogObject)
-        .then(b => {
-          setBlogs(blogs.concat(b))
-          notify(`a new blog ${b.title} by ${b.author} added`, 'success')
+      .then(b => {
+        setBlogs(blogs.concat(b))
+        notify(`a new blog ${b.title} by ${b.author} added`, 'success')
       })
       .catch(error => { notify(error.response.data.error, 'error') })
 
@@ -79,8 +79,8 @@ const App = () => {
 
     blogService
       .update(blogObject.id, data)
-        .then(returnedBlog => {
-          setBlogs(blogs.map(b => b.id !== blogObject.id ? b: returnedBlog))
+      .then(returnedBlog => {
+        setBlogs(blogs.map(b => b.id !== blogObject.id ? b: returnedBlog))
       })
       .catch(error => { notify(error.response.data.error, 'error') })
   }
@@ -138,10 +138,10 @@ const App = () => {
         user === null
           ? loginForm()
           : <div>
-              <p>{ user.name } logged in </p>
-              <button style={{ marginBottom: 5 }} onClick={ handleLogout }>logout</button>
-              { blogForm() }
-            </div>
+            <p>{ user.name } logged in </p>
+            <button style={{ marginBottom: 5 }} onClick={ handleLogout }>logout</button>
+            { blogForm() }
+          </div>
       }
       <div>
         { blogs.sort((a, b) => b.likes - a.likes ).map(b =>

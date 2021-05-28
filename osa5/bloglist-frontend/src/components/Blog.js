@@ -19,18 +19,18 @@ const Blog = ({ blog, likeBlog, removeBlog }) => {
       <span><b>{ blog.title }</b> by <i>{ blog.author }</i></span>
       <button
         onClick={ () => setShowAllInfo(!showAllInfo) }>
-          { showAllInfo ? 'hide' : 'view' }
+        { showAllInfo ? 'hide' : 'view' }
       </button>
       {
         showAllInfo
-        ? <span>
+          ? <span>
             <br />
             <a href={ blog.url }> { blog.url } </a> <br />
             { blog.likes } likes <button onClick={likeBlog}>like</button> <br />
             { blog.user.name } <br />
             <button onClick={removeBlog}>remove</button>
           </span>
-        : null
+          : null
       }
 
     </div>
