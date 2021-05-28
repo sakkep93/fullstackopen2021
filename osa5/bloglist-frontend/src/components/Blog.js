@@ -17,10 +17,7 @@ const Blog = ({ blog, likeBlog, removeBlog }) => {
   return (
     <div style={ blogStyle }>
       <span><b>{ blog.title }</b> by <i>{ blog.author }</i></span>
-      <button
-        onClick={ () => setShowAllInfo(!showAllInfo) }>
-        { showAllInfo ? 'hide' : 'view' }
-      </button>
+      <button onClick={ () => setShowAllInfo(!showAllInfo) }> { showAllInfo ? 'hide' : 'view' }</button>
       {
         showAllInfo
           ? <span>

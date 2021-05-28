@@ -39,7 +39,7 @@ describe('<Blog />', () => {
     const button = component.getByText('view')
     fireEvent.click(button)
 
-    const string = 'Testing components can be achieved using react-testing-library by Mehide this/path/takes/you/to/this/blog.html 69 likes like Teh User remove'
+    const string = 'Testing components can be achieved using react-testing-library by Me hide this/path/takes/you/to/this/blog.html 69 likes like Teh User remove'
 
     expect(component.container).toHaveTextContent(string)
   })

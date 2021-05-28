@@ -116,7 +116,7 @@ const App = () => {
       <LoginForm
         username={ username }
         password={ password }
-        handleUserNameChange={ ({ target }) => setUsername(target.value) }
+        handleUsernameChange={ ({ target }) => setUsername(target.value) }
         handlePasswordChange={ ({ target }) => setPassword(target.value) }
         handleSubmit={ handleLogin } />
     </Togglable>
@@ -143,7 +143,7 @@ const App = () => {
             { blogForm() }
           </div>
       }
-      <div>
+      <div id="blog-list">
         { blogs.sort((a, b) => b.likes - a.likes ).map(b =>
           <Blog
             key={b.id}
