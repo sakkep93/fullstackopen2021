@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { voteAnecdote } from '../reducers/anecdoteReducer'
-import { showNotification, removeNotification } from '../reducers/notificationReducer'
+import { setNotification } from '../reducers/notificationReducer'
 
 const Anecdote = ({ anecdote, handleClick }) => {
   const listItemStyle = { marginBottom: 5 }
@@ -18,14 +18,11 @@ const Anecdote = ({ anecdote, handleClick }) => {
 
 const AnecdoteList = () => {
   const dispatch = useDispatch()
-  const vote = (id) => { dispatch(voteAnecdote(id)) }
-  const notify = (content) => {
-    dispatch(showNotification(`you voted '${content}'`))
-    setTimeout(() => { dispatch(removeNotification()) }, 5000)
-  }
+
   const handleClick = (anecdote) => {
-    vote(anecdote.id)
-    notify(anecdote.content)
+
+    dispatch(voteAnecdote(anecdote))
+    dispatch(setNotification(`you voted '${anecdote.content}'`, 5))
   }
   const anecdotes = useSelector(state => state.anecdotes.filter(a => a.content.toLowerCase().includes(state.filter.toLowerCase())))
   const listStyle = { padding: 0, listStyleType: 'none' }
